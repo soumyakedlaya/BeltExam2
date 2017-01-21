@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <div id= "borrower_login">
+        <% if flash[:login_errors]%>
+            <%= flash[:login_errors]%><br>
+          <% end %>
+        <h1 id="login">Login</h1><br>
+        <form action= '/borrower/sessions' method="post">
+          <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
+          <label>Email: <input type= "text" name="Email"></label><br>
+          <br><label>Password: <input type="password" name="Password"></label><br>
+          <br><input type="submit" value="Login"><br>
+          <a href = '/'>Click here to register</a>
+        </form>
+      </div>
+  </body>
+</html>

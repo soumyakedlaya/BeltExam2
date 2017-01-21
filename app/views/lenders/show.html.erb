@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <br>
+    <div id= "lender_container">
+    <% if flash[:transac_errors]%>
+        <%= flash[:transac_errors]%><br>
+      <% end %>
+    <br><p>Name: <%=@lender.first_name%> <%=@lender.last_name %></p>
+    <p id = "amtbal">Amount Balance: <%=@lender.money %></p>
+    <h2> People in need of help:</h2>
+      <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Need Money for</th>
+              <th>Reason for Loan</th>
+              <th>Amount Needed</th>
+              <th>Amount Raised</th>
+              <th>Action</th>
+            </tr>
+              </thead>
+              <tbody>
+                <% @borrowers.each do |b| %>
+                    <tr>
+                      <td><%=b.first_name%> <%=b.last_name %></a></td>
+                      <td><%=b.purpose%></td>
+                      <td><%=b.description%></td>
+                      <td><%=b.money%></td>
+                      <td><%=b.moneyraised%></td>
+                      <td>
+                        <form action = '/transactions' method = "post">
+                          $<input id="moneyraised" type="number" name="moneyraised" min="5" max="10000" step="5" value= "25">
+                          <input type= "hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                          <input type="hidden" name="borrower_id" value='<%=b.id %>'>
+                          <input id="lend" type = "submit" value= "Lend"><br>
+                        </form>
+                      </td>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+      <h2> People you lend money to:</h2>
+        <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Need Money for</th>
+                <th>Reason for Loan</th>
+                <th>Amount Needed</th>
+                <th>Amount Raised</th>
+                <th>Amount Lent</th>
+              </tr>
+                </thead>
+                <tbody>
+                  <% @displayloans.each do |d| %>
+                      <tr>
+                        <td><%=d.borrower.first_name%> <%=d.borrower.last_name %></a></td>
+                        <td><%=d.borrower.purpose%></td>
+                        <td><%=d.borrower.description%></td>
+                        <td><%=d.borrower.money%></td>
+                        <td><%=d.borrower.moneyraised%></td>
+                        <td><%=d.amount%></td>
+                      </tr>
+                  <% end %>
+              </tbody>
+          </table>
+      </div>
+  </body>
+</html>

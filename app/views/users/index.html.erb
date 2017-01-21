@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Online Lending</title>
+  </head>
+  <body>
+    <div id= "container">
+      <h1> Welcome to Online Lending! </h1>
+      <div id= "lender">
+        <% if flash[:lender_reg_errors]%>
+            <%= flash[:lender_reg_errors]%><br>
+          <% end %>
+        <h2>Lender</h2>
+        <form action = "/lenders" method = "post">
+          <input type= "hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <label>First Name: <input type="text" name="lender[first_name]"></label><br>
+          <br><label>Last Name: <input type="text" name="lender[last_name]"></label><br>
+          <br><label>Email: <input type="text" name="lender[email]"></label><br>
+          <br><label>Password: <input type="password" name="lender[password]"></label><br>
+          <br><label>Money: $<input type="number" name="lender[money]" min="5" max="10000" step="5" value= "50"></label><br>
+          <br><input type = "submit" value= "Register"><br>
+          <br><a href= '/online_lending/lender/login'>Already a member?</a><br>
+        </form>
+      </div>
+      <div id="borrower">
+        <% if flash[:borrower_reg_errors]%>
+            <%= flash[:borrower_reg_errors]%><br>
+          <% end %>
+        <h2>Borrower</h2>
+        <form action = "/borrowers" method = "post">
+          <input type= "hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <label>First Name: <input type="text" name="borrower[first_name]"></label><br>
+          <br><label>Last Name: <input type="text" name="borrower[last_name]"></label><br>
+          <br><label>Email: <input type="text" name="borrower[email]"></label><br>
+          <br><label>Password: <input type="password" name="borrower[password]"></label><br>
+          <br><label>Need Money For: <input type="text" name="borrower[purpose]"></label><br>
+          <br><label>Description: <input type="text" name="borrower[description]"></label><br>
+          <br><label>Amount Needed: $<input type="number" name="borrower[money]" min="5" max="10000" step="5" value= "50"></label><br>
+          <br><input type = "submit" value= "Register"><br>
+          <br><a href= '/online_lending/borrower/login'>Already a member?</a><br>
+        </form>
+      </div>
+  </div>
+  </body>
+</html>

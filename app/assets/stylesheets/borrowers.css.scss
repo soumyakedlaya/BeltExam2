@@ -1,0 +1,45 @@
+// Place all the styles related to the borrowers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#borrower_container{
+  margin-left: 30px;
+}
+p{
+  font-size: 30px;
+  font-weight: bold;
+  padding-left: 20px;
+}
+
+#amtneeded, #amtraised{
+  font-size: 20px;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    padding-left: 20px;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+tr:hover{background-color:lightgrey}
+
+th {
+  background-color: #009688;
+  color: white;
+}
+
+tr{
+  font-size: 20px;
+}
+
+th {
+  background-color: #009688;
+  color: white;
+}
