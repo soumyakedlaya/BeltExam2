@@ -12,11 +12,11 @@
         <h1 id="login">Login</h1><br>
         <form action= '/lender/sessions' method="post">
           <input type='hidden' name='authenticity_token' value='<%= form_authenticity_token %>'>
-          Email: <input type= "text" name="Email"><br>
-          <br>Password: <input type="password" name="Password"><br>
+          <label>Email: <input type= "text" name="Email"></label><br>
+          <br><label>Password: <input type="password" name="Password"></label><br>
           <br><input type="submit" value="Login"><br>
           <a href = '/'>Click here to register</a>
+        </form>
       </div>
-    </form>
   </body>
 </html>
