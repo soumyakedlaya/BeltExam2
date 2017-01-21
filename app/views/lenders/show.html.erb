@@ -11,7 +11,7 @@
         <%= flash[:transac_errors]%><br>
       <% end %>
     <br><p>Name: <%=@lender.first_name%> <%=@lender.last_name %></p>
-    <p id = "amtbal">Amount Balance: <%=@lender.money %></p>
+    <p id = "amtbal">Amount Balance: $<%=@lender.money %></p>
     <h2> People in need of help:</h2>
       <table>
           <thead>
