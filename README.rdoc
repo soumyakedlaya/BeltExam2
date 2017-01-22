@@ -1,5 +1,7 @@
 == README
 
+IP address for deployed site: 35.166.29.158
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
