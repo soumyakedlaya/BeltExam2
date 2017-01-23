@@ -1,3 +1,4 @@
 == README
 
-IP address for deployed site: 35.166.29.158
+Please go to this URL to view the app:
+http://35.166.29.158
