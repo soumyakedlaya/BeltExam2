@@ -1,33 +1,34 @@
+#all methods available for entire app
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  #prevent user from visiting a page without logging in
+  # if no user in session, redirect to root route
   def require_login
-    # binding.pry
     if session[:lender_id]
       # binding.pry
       redirect_to '/' if session[:lender_id] == nil
     end
     if session[:borrower_id]
-      # binding.pry
       redirect to '/' if session[:borrower_id] == nil
     end
   end
 
+  #confirm if current user is the user who completes various actions in the app
+  #if the users don't match, redirect to root route
   def require_correct_user
-    # binding.pry
     if session[:lender_id]
       user = Lender.find(session[:lender_id])
     end
     if session[:borrower_id]
       user =  Borrower.find(session[:borrower_id])
-      # binding.pry
+      # binding.pry - adds a breakpoint to debug in console
     end
     # binding.pry
     redirect_to "/" if current_user != user || current_user == nil
   end
 
+#initialze various flash error messages
   def initialize_flash
     if !flash[:lender_reg_errors]
       flash[:lender_reg_errors] = []
@@ -44,14 +45,13 @@ class ApplicationController < ActionController::Base
     if !flash[:errors]
       flash[:errors] = []
     end
-    # if !flash[:duplicate_errors]
-    #   flash[:duplicate_errors] = []
-    # end
+
     if !flash[:transac_errors]
       flash[:transac_errors] = []
     end
   end
 
+#set current user. Finds user with session[:id] in db
   def current_user
     if session[:lender_id]
       return Lender.find(session[:lender_id])

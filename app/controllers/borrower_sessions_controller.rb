@@ -1,7 +1,12 @@
 class BorrowerSessionsController < ApplicationController
 
   def index
+    #renders views/borrower_sessions/index.html.erb automatically
   end
+
+  # find user in borrower db using email input from login form
+  #if passwords match, login and set session[:id] to that user's id
+  #if password mismatch, flash error messages, redirect to login page
   def create
     borrower = Borrower.find_by_email(params[:Email])
     if borrower && borrower.authenticate(params[:Password])
@@ -15,8 +20,8 @@ class BorrowerSessionsController < ApplicationController
     end
   end
 
+#when logout button is clicked, set session[:id] to nil and redirect to root route
   def destroy
-    # binding.pry
     session[:borrower_id] = nil
     # binding.pry
     redirect_to "/"
