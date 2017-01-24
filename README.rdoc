@@ -2,3 +2,7 @@
 
 Please go to this URL to view the app:
 http://35.166.29.158
+
+1. Register or log in as a lender or borrower
+2. If you are a lender, you will see a list of people who have requested money. Click Lend for those you wish to donate to.
+3. If you are a borrower, you will see a list of people who have donated money to you.

@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     redirect_to "/" if current_user != user || current_user == nil
   end
 
-#initialze various flash error messages
+#initialize various flash error messages
   def initialize_flash
     if !flash[:lender_reg_errors]
       flash[:lender_reg_errors] = []
